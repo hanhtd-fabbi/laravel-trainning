@@ -19,15 +19,17 @@ class UpdateProfileController extends Controller
         return view('updateProfile', compact('user'));
     }
 
-    public function update(Request $request)
+    public function update($id, Request $request)
     {
-        $user = Auth::user();
+        $user = User::where('email', $request->email)->first();
 
-        User::where('id', $user->id)->update([
-            'name' => $request->name,
-            'email' => $request->email,
-        ]);
+        if (empty($user)) {
+            User::where('id', $id)->update([
+                'name' => $request->name,
+                'email' => $request->email,
+            ]);
+        }
 
-        return redirect()->route('show', $user->id);
+        return redirect()->route('show', $id);
     }
 }

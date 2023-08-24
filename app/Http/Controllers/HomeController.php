@@ -21,7 +21,7 @@ class HomeController extends Controller
         $user = User::where('id', $id)->first();
 
         if (!empty($user)) {
-            User::where('id', $id)->delete();
+            $user->delete();
         }
 
         return redirect()->route('home');

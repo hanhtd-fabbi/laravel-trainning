@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Session;
 
 class RegisterReq extends FormRequest
 {
@@ -11,6 +12,7 @@ class RegisterReq extends FormRequest
      */
     public function authorize(): bool
     {
+        Session::flash('message_register', ['text' => 'Register fail', 'type' => 'danger']);
         return true;
     }
 
@@ -21,9 +23,10 @@ class RegisterReq extends FormRequest
      */
     public function rules(): array
     {
+
         return [
             'name' => 'required|max:25',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users',
             'password' => 'required|min:6'
         ];
     }

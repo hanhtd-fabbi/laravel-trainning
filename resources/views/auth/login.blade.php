@@ -26,9 +26,14 @@
                             " class="lead fw-normal mb-0 me-3">Login</p>
                         </div>
 
+                        @if(Session::has('message'))
+                            <div class="alert alert-{{session('message')['type']}}">
+                                {{session('message')['text']}}
+                            </div>
+                        @endif
                         <!-- Email input -->
                         <div class="form-outline mb-4">
-                            <input type="email" name="email" id="form3Example3" class="form-control form-control-lg" placeholder="Enter a valid email address" />
+                            <input type="text" name="email" id="form3Example3" class="form-control form-control-lg" placeholder="Enter a valid email address" value="{{old('email'?? '')}}"/>
                             <label class="form-label" for="form3Example3">Email address</label>
                         </div>
 

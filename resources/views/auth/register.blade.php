@@ -34,23 +34,28 @@
             ">
                         <div class="card-body p-5 shadow-5 text-center">
                             <h2 class="fw-bold mb-5">Sign up</h2>
+                            @if(Session::has('message_register'))
+                                <div class="alert alert-{{session('message_register')['type']}}">
+                                    {{session('message_register')['text']}}
+                                </div>
+                            @endif
                             <form method="POST" action="{{route('custom.register')}}">
                                 <!-- 2 column grid layout with text inputs for the first and last names -->
                                 @csrf
                                 <div class="form-outline mb-4">
-                                    <input type="text" name="name" id="form3Example3" class="form-control" />
+                                    <input type="text" name="name" id="form3Example3" class="form-control" value="{{old('name')?? ''}}" />
                                     <label class="form-label" for="form3Example3">Name</label>
                                 </div>
 
                                 <!-- Email input -->
                                 <div class="form-outline mb-4">
-                                    <input type="email" name="email" id="form3Example3" class="form-control" />
+                                    <input type="text" name="email" id="form3Example3" class="form-control" value="{{old('email')?? ''}}"/>
                                     <label class="form-label" for="form3Example3">Email address</label>
                                 </div>
 
                                 <!-- Password input -->
                                 <div class="form-outline mb-4">
-                                    <input type="password" name="password" id="form3Example4" class="form-control" />
+                                    <input type="password" name="password" id="form3Example4" class="form-control" value="{{old('password')?? ''}}"/>
                                     <label class="form-label" for="form3Example4">Password</label>
                                 </div>
 

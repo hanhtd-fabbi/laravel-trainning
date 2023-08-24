@@ -16,15 +16,11 @@ class RegistrationController extends Controller
 
     public function store(RegisterReq $request)
     {
-        $user = User::where('email', $request->email)->first();
-
-        if (empty($user)) {
-            User::create([
-                'name' => $request->name,
-                'email' => $request->email,
-                'password' => Hash::make($request->password)
-            ]);
-        }
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password)
+        ]);
 
         return view('success');
     }

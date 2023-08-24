@@ -6,6 +6,7 @@ use App\Http\Requests\LoginReq;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
@@ -18,16 +19,13 @@ class AuthController extends Controller
     {
         $user = User::where('email', $request->email)->first();
 
-        if (empty($user)) {
-            return redirect()->route('login');
-        }
-
-        if (Hash::check($request->password, $user->password)) {
+        if (!empty($user) && Hash::check($request->password, $user->password)) {
             Auth::login($user);
             return redirect()->route('home');
+        } else {
+            Session::flash('message', ['text' => 'Login fail', 'type' => 'danger']);
+            return redirect()->back()->withInput($request->all());
         }
-
-        return redirect()->back();
     }
 
     public function logout()
