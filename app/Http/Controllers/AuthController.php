@@ -23,7 +23,7 @@ class AuthController extends Controller
             Auth::login($user);
             return redirect()->route('home');
         } else {
-            Session::flash('message', ['text' => 'Login fail', 'type' => 'danger']);
+            Session::flash('error', 'Login fail');
             return redirect()->back()->withInput($request->all());
         }
     }

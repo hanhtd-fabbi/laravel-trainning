@@ -12,7 +12,6 @@ class RegisterReq extends FormRequest
      */
     public function authorize(): bool
     {
-        Session::flash('message_register', ['text' => 'Register fail', 'type' => 'danger']);
         return true;
     }
 

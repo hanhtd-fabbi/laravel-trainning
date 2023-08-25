@@ -34,11 +34,7 @@
             ">
                         <div class="card-body p-5 shadow-5 text-center">
                             <h2 class="fw-bold mb-5">Sign up</h2>
-                            @if(Session::has('message_register'))
-                                <div class="alert alert-{{session('message_register')['type']}}">
-                                    {{session('message_register')['text']}}
-                                </div>
-                            @endif
+                            @include('alert')
                             <form method="POST" action="{{route('custom.register')}}">
                                 <!-- 2 column grid layout with text inputs for the first and last names -->
                                 @csrf
