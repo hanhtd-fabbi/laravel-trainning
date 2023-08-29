@@ -22,10 +22,10 @@ class AuthController extends Controller
         if (!empty($user) && Hash::check($request->password, $user->password)) {
             Auth::login($user);
             return redirect()->route('home');
-        } else {
-            Session::flash('error', 'Login fail');
-            return redirect()->back()->withInput($request->all());
         }
+
+        Session::flash('error', 'Login fail');
+        return redirect()->back()->withInput($request->all());
     }
 
     public function logout()
