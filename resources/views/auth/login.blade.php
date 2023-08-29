@@ -29,13 +29,19 @@
                         @include('alert')
                         <!-- Email input -->
                         <div class="form-outline mb-4">
-                            <input type="text" name="email" id="form3Example3" class="form-control form-control-lg" placeholder="Enter a valid email address" value="{{old('email' ?? '')}}"/>
+                            <input type="text" name="email" id="form3Example3" class="@error('email') is-invalid @enderror form-control form-control-lg" placeholder="Enter a valid email address" value="{{old('email' ?? '')}}"/>
+                            @error('email')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                             <label class="form-label" for="form3Example3">Email address</label>
                         </div>
 
                         <!-- Password input -->
                         <div class="form-outline mb-3">
-                            <input type="password" name="password" id="form3Example4" class="form-control form-control-lg" placeholder="Enter password" />
+                            <input type="password" name="password" id="form3Example4" class="@error('password') is-invalid @enderror form-control form-control-lg" placeholder="Enter password" />
+                            @error('password')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                             <label class="form-label" for="form3Example4">Password</label>
                         </div>
 
