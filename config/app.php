@@ -163,6 +163,7 @@ return [
         /*
          * Application Service Providers...
          */
+        InstanceCode\Repository\Providers\RepositoryServiceProvider::class,
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
@@ -183,6 +184,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
+        'Repository' => InstanceCode\Repository\Facades\Repository::class,
     ])->toArray(),
 
 ];

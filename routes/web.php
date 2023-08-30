@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\Subjects\SubjectController;
 use App\Http\Controllers\UpdateProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,5 +34,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/update-profile/{id}', [UpdateProfileController::class, 'index'])->name('update.profile');
         Route::put('/update-user/{id}', [UpdateProfileController::class, 'update'])->name('update.user');
         Route::post('/delete/{id}', [HomeController::class, 'destroy'])->name('delete.user');
+
+        Route::prefix('/subject')->group(function () {
+            Route::get('/index', [SubjectController::class, 'index'])->name('index.subject');
+            Route::post('/create', [SubjectController::class, 'store'])->name('create.subject');
+        });
     });
 });
