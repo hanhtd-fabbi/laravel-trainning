@@ -4,15 +4,13 @@ namespace App\Http\Controllers\Subjects;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SubjectReq;
-use App\Repositories\SubjectInterface;
-use App\Repositories\SubjectRepository;
-use Illuminate\Support\Facades\View;
+use App\Repositories\Subject\SubjectInterface;
 
 class SubjectController extends Controller
 {
     private $subjectRepository;
 
-    public function __construct(SubjectRepository $subjectRepository)
+    public function __construct(SubjectInterface $subjectRepository)
     {
         $this->subjectRepository = $subjectRepository;
     }
@@ -25,7 +23,7 @@ class SubjectController extends Controller
     }
     public function store(SubjectReq $request)
     {
-        $this->subjectRepository->store($request);
+        $this->subjectRepository->store($request->all());
 
         return redirect()->route('index.subject');
     }

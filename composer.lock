@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aa322c53454393ed775cfe4807d54a50",
+    "content-hash": "d8447cff9d2d87c23407a3a85abb37de",
     "packages": [
         {
             "name": "brick/math",
@@ -973,6 +973,42 @@
                 }
             ],
             "time": "2021-10-07T12:57:01+00:00"
+        },
+        {
+            "name": "instance-code/repository",
+            "version": "v1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/instance-code/repository.git",
+                "reference": "d3f6d195e02b1b4ece6aec04333af68224d016fc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/instance-code/repository/zipball/d3f6d195e02b1b4ece6aec04333af68224d016fc",
+                "reference": "d3f6d195e02b1b4ece6aec04333af68224d016fc",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "InstanceCode\\Repository\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tan Nguyen",
+                    "email": "tannq@fabbi.io"
+                }
+            ],
+            "support": {
+                "issues": "https://github.com/instance-code/repository/issues",
+                "source": "https://github.com/instance-code/repository/tree/v1.0.4"
+            },
+            "time": "2022-08-01T02:48:37+00:00"
         },
         {
             "name": "laravel/framework",
